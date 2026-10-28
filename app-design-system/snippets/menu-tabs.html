@@ -1,0 +1,16 @@
+<!-- Tabs (interactive via aria-selected) + Menu (toggle .open on .ds-menu). -->
+<div class="ds-tabs" id="tabs">
+  <button class="ds-tab" role="tab" aria-selected="true">Active</button>
+  <button class="ds-tab" role="tab" aria-selected="false">Backlog</button>
+  <button class="ds-tab" role="tab" aria-selected="false">All issues</button>
+</div>
+
+<div class="ds-menu-wrap">
+  <button class="ds-btn ds-btn--secondary" id="menu-btn">Open menu<svg width="12" height="12"><use href="#i-chevron"/></svg></button>
+  <div class="ds-menu" id="menu" role="menu">
+    <button class="ds-menu__item" role="menuitem">New issue<span class="shortcut"><span class="ds-kbd">C</span></span></button>
+    <button class="ds-menu__item" role="menuitem">Search<span class="shortcut"><span class="ds-kbd">⌘ K</span></span></button>
+    <div class="ds-menu__sep"></div>
+    <button class="ds-menu__item" role="menuitem">Toggle theme</button>
+  </div>
+</div>

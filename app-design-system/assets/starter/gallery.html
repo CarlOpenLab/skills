@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System Starter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="system.css" />
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-moon" viewBox="0 0 16 16"><path d="M13 9.6A5.6 5.6 0 0 1 6.4 3a5.6 5.6 0 1 0 6.6 6.6z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2.2v1.4M8 12.4v1.4M2.2 8h1.4M12.4 8h1.4M3.9 3.9l1 1M11.1 11.1l1 1M12.1 3.9l-1 1M4.9 11.1l-1 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 16 16"><path d="M4 8.4 6.8 11 12 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 16 16"><path d="M4.5 6.2 8 9.8l3.5-3.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 16 16"><path d="M4.4 4.4l7.2 7.2M11.6 4.4l-7.2 7.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-user" viewBox="0 0 16 16"><circle cx="8" cy="5.6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.4 13.2c.5-2.3 2.3-3.6 4.6-3.6s4.1 1.3 4.6 3.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+      <symbol id="i-tag" viewBox="0 0 16 16"><path d="M3 7.2V3.6c0-.3.3-.6.6-.6h3.6c.2 0 .4.1.5.2l5 5c.2.2.2.6 0 .8l-3.4 3.4a.6.6 0 0 1-.8 0l-5-5a.7.7 0 0 1-.5-.2z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="5.8" cy="5.8" r=".9" fill="currentColor"/></symbol>
+      <symbol id="i-more" viewBox="0 0 16 16"><circle cx="3.4" cy="8" r="1.1" fill="currentColor"/><circle cx="8" cy="8" r="1.1" fill="currentColor"/><circle cx="12.6" cy="8" r="1.1" fill="currentColor"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="ds-shell">
+    <nav class="ds-nav">
+      <div class="brand"><span class="mark"></span>Design System</div>
+      <a href="#color">01 Color</a>
+      <a href="#type">02 Type</a>
+      <a href="#scale">03 Scale</a>
+      <a href="#components">04 Components</a>
+      <a href="#rules">05 Rules</a>
+      <div class="spacer"></div>
+      <div class="foot">Run the extraction workflow,<br />then replace values in tokens.css</div>
+    </nav>
+
+    <main class="ds-main">
+      <div class="ds-top">
+        <h1>Design System</h1>
+        <span class="meta">colors · type · scale · atoms</span>
+        <div class="actions">
+          <button class="ds-iconbtn" id="theme-toggle" aria-label="切换主题"><svg width="16" height="16"><use href="#i-moon"/></svg></button>
+        </div>
+      </div>
+
+      <section class="ds-section" id="color">
+        <h2><span class="num">01</span>Color</h2>
+        <p>Surfaces → borders → text → accent → status. Components reference semantic tokens only. Click any swatch to copy its CSS variable.</p>
+
+        <h3 class="ds-sub">Surfaces <span class="hint">step up by lightness, never skip</span></h3>
+        <div class="swatch-grid" id="surface-grid"></div>
+
+        <h3 class="ds-sub">Borders <span class="hint">separate, never decorate</span></h3>
+        <div id="border-rows"></div>
+
+        <h3 class="ds-sub">Text <span class="hint">body uses secondary, not pure white</span></h3>
+        <div class="text-rows" id="text-rows"></div>
+
+        <h3 class="ds-sub">Accent &amp; selection <span class="hint">one primary accent per view</span></h3>
+        <div class="swatch-grid" id="accent-grid"></div>
+
+        <h3 class="ds-sub">Status <span class="hint">only inside status components</span></h3>
+        <div class="dot-row">
+          <span class="dot-item"><i class="dot" style="background:var(--status-backlog)"></i>Backlog</span>
+          <span class="dot-item"><i class="dot" style="background:var(--status-todo)"></i>Todo</span>
+          <span class="dot-item"><i class="dot" style="background:var(--status-progress)"></i>In Progress</span>
+          <span class="dot-item"><i class="dot" style="background:var(--status-done)"></i>Done</span>
+          <span class="dot-item"><i class="dot" style="background:var(--status-canceled)"></i>Canceled</span>
+        </div>
+
+        <h3 class="ds-sub">Priority <span class="hint">never mixed with status colors</span></h3>
+        <div class="dot-row">
+          <span class="dot-item" style="color:var(--priority-none)"><span class="prio-bars"><i></i><i></i><i></i></span>No priority</span>
+          <span class="dot-item" style="color:var(--priority-low)"><span class="prio-bars"><i></i><i></i><i></i></span>Low</span>
+          <span class="dot-item" style="color:var(--priority-medium)"><span class="prio-bars"><i></i><i></i><i></i></span>Medium</span>
+          <span class="dot-item" style="color:var(--priority-high)"><span class="prio-bars"><i></i><i></i><i></i></span>High</span>
+          <span class="dot-item" style="color:var(--priority-urgent)"><span class="prio-bars"><i></i><i></i><i></i></span>Urgent</span>
+        </div>
+
+        <h3 class="ds-sub">State overlays <span class="hint">hover / pressed / selection / focus</span></h3>
+        <div class="dot-row">
+          <span class="dot-item" style="background:var(--surface-base)"><i class="dot" style="background:var(--state-hover);box-shadow:0 0 0 1px var(--border-subtle)"></i>hover 白色 4%</span>
+          <span class="dot-item" style="background:var(--surface-base)"><i class="dot" style="background:var(--state-pressed);box-shadow:0 0 0 1px var(--border-subtle)"></i>pressed 白色 8%</span>
+          <span class="dot-item" style="background:var(--surface-base)"><i class="dot" style="background:var(--selection)"></i>选区 强调 40%</span>
+          <span class="dot-item" style="background:var(--surface-base)"><i class="dot" style="background:transparent;box-shadow:0 0 0 1px var(--focus)"></i>focus 1px</span>
+        </div>
+
+        <ul class="rule-list">
+          <li><strong>表面只升不跳：</strong>app → base → raised，弹窗用 raised，输入框用 inset，选中用 active。</li>
+          <li><strong>文字四级别混用：</strong>标题 primary、正文 secondary、辅助 tertiary、元信息 quaternary。</li>
+          <li><strong>强调色克制：</strong>一个视图只允许一个主强调（主按钮或选中态），不用来大面积填色。</li>
+        </ul>
+      </section>
+
+      <section class="ds-section" id="type">
+        <h2><span class="num">02</span>Type</h2>
+        <p>Type scale is read from the <code>--text-*</code> tokens. Record the source app's real sizes and snap them to a consistent scale.</p>
+
+        <div id="type-rows"></div>
+      </section>
+
+      <section class="ds-section" id="scale">
+        <h2><span class="num">03</span>Space, radius, controls</h2>
+        <p>Spacing, radii, and control heights are read from <code>--space-*</code>, <code>--radius-*</code>, and <code>--control-*</code>.</p>
+
+        <h3 class="ds-sub">Space</h3>
+        <div class="scale-block" id="space-scale"></div>
+
+        <h3 class="ds-sub">Radius</h3>
+        <div class="radius-grid" id="radius-grid"></div>
+
+        <h3 class="ds-sub">Controls</h3>
+        <div class="control-scale" id="control-scale"></div>
+
+        <h3 class="ds-sub">Shadows</h3>
+        <div class="shadow-grid">
+          <div class="shadow-card" style="box-shadow:var(--shadow-sm)">shadow-sm</div>
+          <div class="shadow-card" style="box-shadow:var(--shadow-md)">shadow-md</div>
+          <div class="shadow-card" style="box-shadow:var(--shadow-lg)">shadow-lg</div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="components">
+        <h2><span class="num">04</span>Components</h2>
+        <p>只保留可复用的原子。每个组件必须覆盖 default / hover / active / focus / disabled 五种状态；组合成页面时不新增组件，只做组合。</p>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Button</span><span class="desc">4 变体 · 3 尺寸 · 5 状态</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">variants</span><div class="demo">
+              <button class="ds-btn ds-btn--primary">Create issue</button>
+              <button class="ds-btn ds-btn--secondary">Cancel</button>
+              <button class="ds-btn ds-btn--ghost">Ghost</button>
+              <button class="ds-btn ds-btn--danger">Delete</button>
+            </div></div>
+            <div class="state-row"><span class="label">hover</span><div class="demo">
+              <button class="ds-btn ds-btn--primary is-hover">Create issue</button>
+              <button class="ds-btn ds-btn--secondary is-hover">Cancel</button>
+              <button class="ds-btn ds-btn--ghost is-hover">Ghost</button>
+            </div></div>
+            <div class="state-row"><span class="label">active</span><div class="demo">
+              <button class="ds-btn ds-btn--primary is-active">Create issue</button>
+              <button class="ds-btn ds-btn--secondary is-active">Cancel</button>
+            </div></div>
+            <div class="state-row"><span class="label">focus</span><div class="demo">
+              <button class="ds-btn ds-btn--primary is-focus">Create issue</button>
+              <button class="ds-btn ds-btn--secondary is-focus">Cancel</button>
+            </div></div>
+            <div class="state-row"><span class="label">disabled</span><div class="demo">
+              <button class="ds-btn ds-btn--primary" disabled>Create issue</button>
+              <button class="ds-btn ds-btn--secondary" disabled>Cancel</button>
+            </div></div>
+            <div class="state-row"><span class="label">sizes</span><div class="demo">
+              <button class="ds-btn ds-btn--primary ds-btn--xs">xs 24</button>
+              <button class="ds-btn ds-btn--primary">sm 28</button>
+              <button class="ds-btn ds-btn--primary ds-btn--md">md 32</button>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Icon Button</span><span class="desc">28×28，ghost / pill</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">ghost</span><div class="demo">
+              <button class="ds-iconbtn" aria-label="Search"><svg width="16" height="16"><use href="#i-search"/></svg></button>
+              <button class="ds-iconbtn" aria-label="More"><svg width="16" height="16"><use href="#i-more"/></svg></button>
+              <button class="ds-iconbtn" aria-label="Add"><svg width="16" height="16"><use href="#i-plus"/></svg></button>
+            </div></div>
+            <div class="state-row"><span class="label">pill</span><div class="demo">
+              <button class="ds-iconbtn ds-iconbtn--pill" aria-label="Add"><svg width="14" height="14"><use href="#i-plus"/></svg></button>
+              <button class="ds-iconbtn ds-iconbtn--pill" aria-label="More"><svg width="14" height="14"><use href="#i-more"/></svg></button>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Input / Textarea</span><span class="desc">inset 底 + 1px 描边，focus 变强调色</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">default</span><div class="demo" style="display:block">
+              <div class="ds-field" style="max-width:420px">
+                <label class="ds-label" for="in1">Issue title</label>
+                <input class="ds-input" id="in1" placeholder="给这个 issue 起个标题" />
+              </div>
+            </div></div>
+            <div class="state-row"><span class="label">focus</span><div class="demo" style="display:block">
+              <input class="ds-input is-focus" style="max-width:420px" value="Focus 状态：描边 + 1px ring" />
+            </div></div>
+            <div class="state-row"><span class="label">disabled</span><div class="demo" style="display:block">
+              <input class="ds-input" style="max-width:420px" value="不可编辑" disabled />
+            </div></div>
+            <div class="state-row"><span class="label">textarea</span><div class="demo" style="display:block">
+              <textarea class="ds-input" style="max-width:560px" placeholder="Add description…">多行输入使用 15px，行高 1.6。</textarea>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Pill / Select trigger</span><span class="desc">24 高，全圆角，属性选择入口</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">default</span><div class="demo">
+              <button class="ds-pill">Backlog<svg><use href="#i-chevron"/></svg></button>
+              <button class="ds-pill"><svg><use href="#i-user"/></svg>Assignee</button>
+              <button class="ds-pill"><svg><use href="#i-tag"/></svg>Labels</button>
+              <button class="ds-pill" aria-label="More"><svg><use href="#i-more"/></svg></button>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Checkbox / Switch</span><span class="desc">可交互，选中用强调色</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">checkbox</span><div class="demo">
+              <label class="ds-check"><input type="checkbox" checked /><span class="box"><svg width="10" height="10"><use href="#i-check"/></svg></span>Create more</label>
+              <label class="ds-check"><input type="checkbox" /><span class="box"><svg width="10" height="10"><use href="#i-check"/></svg></span>Notify me</label>
+            </div></div>
+            <div class="state-row"><span class="label">switch</span><div class="demo">
+              <label class="ds-switch"><input type="checkbox" checked /><span class="track"></span>Enabled</label>
+              <label class="ds-switch"><input type="checkbox" /><span class="track"></span>Disabled</label>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Status / Priority</span><span class="desc">状态点只表达流程，优先级用条形</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">status</span><div class="demo">
+              <span class="ds-status"><i class="dot" style="background:var(--status-backlog)"></i>Backlog</span>
+              <span class="ds-status"><i class="dot" style="background:var(--status-todo)"></i>Todo</span>
+              <span class="ds-status"><i class="dot" style="background:var(--status-progress)"></i>In Progress</span>
+              <span class="ds-status"><i class="dot" style="background:var(--status-done)"></i>Done</span>
+            </div></div>
+            <div class="state-row"><span class="label">priority</span><div class="demo">
+              <span class="ds-priority" style="color:var(--priority-none)"><span class="prio-bars"><i></i><i></i><i></i></span>None</span>
+              <span class="ds-priority" style="color:var(--priority-low)"><span class="prio-bars"><i></i><i></i><i></i></span>Low</span>
+              <span class="ds-priority" style="color:var(--priority-medium)"><span class="prio-bars"><i></i><i></i><i></i></span>Medium</span>
+              <span class="ds-priority" style="color:var(--priority-high)"><span class="prio-bars"><i></i><i></i><i></i></span>High</span>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Avatar / Kbd / Tooltip</span><span class="desc">四个尺寸；快捷键与提示</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">avatar</span><div class="demo">
+              <span class="ds-avatar ds-avatar--16">CA</span>
+              <span class="ds-avatar ds-avatar--20">CA</span>
+              <span class="ds-avatar ds-avatar--24">CA</span>
+              <span class="ds-avatar ds-avatar--28">CA</span>
+            </div></div>
+            <div class="state-row"><span class="label">kbd</span><div class="demo">
+              <span class="ds-kbd">⌘ K</span>
+              <span class="ds-kbd">C</span>
+              <span class="ds-kbd">Esc</span>
+              <span class="ds-kbd">⇧ Enter</span>
+            </div></div>
+            <div class="state-row"><span class="label">tooltip</span><div class="demo">
+              <span class="ds-tip-wrap">
+                <button class="ds-btn ds-btn--secondary">Hover me</button>
+                <span class="ds-tooltip">1px focus ring，不用发光</span>
+              </span>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Tabs</span><span class="desc">激活态用 active 表面</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">tabs</span><div class="demo">
+              <div class="ds-tabs" id="tabs">
+                <button class="ds-tab" role="tab" aria-selected="true">Active</button>
+                <button class="ds-tab" role="tab" aria-selected="false">Backlog</button>
+                <button class="ds-tab" role="tab" aria-selected="false">All issues</button>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Menu</span><span class="desc">raised 表面 + 阴影，条目 30 高</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">menu</span><div class="demo">
+              <div class="ds-menu-wrap">
+                <button class="ds-btn ds-btn--secondary" id="menu-btn">Open menu<svg width="12" height="12"><use href="#i-chevron"/></svg></button>
+                <div class="ds-menu" id="menu" role="menu">
+                  <button class="ds-menu__item" role="menuitem">New issue<span class="shortcut"><span class="ds-kbd">C</span></span></button>
+                  <button class="ds-menu__item" role="menuitem">Search<span class="shortcut"><span class="ds-kbd">⌘ K</span></span></button>
+                  <div class="ds-menu__sep"></div>
+                  <button class="ds-menu__item" role="menuitem" id="menu-theme">Toggle theme</button>
+                </div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Card / Panel</span><span class="desc">raised 表面 + subtle 描边</span></div>
+          <div class="specimen__body">
+            <div class="ds-card" style="max-width:420px">
+              <div class="ds-card__head"><span class="title">Design system</span><span class="meta">12 issues</span></div>
+              <div class="ds-card__body">卡片只承载一组相关信息：头部放标题与元信息，主体放内容，不嵌套第二层卡片。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="specimen">
+          <div class="specimen__head"><span class="name">Dialog / Toast</span><span class="desc">层高与反馈</span></div>
+          <div class="specimen__body">
+            <div class="state-row"><span class="label">trigger</span><div class="demo">
+              <button class="ds-btn ds-btn--secondary" id="open-dialog">Open dialog</button>
+              <button class="ds-btn ds-btn--ghost" id="show-toast">Show toast</button>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="rules">
+        <h2><span class="num">05</span>Rules</h2>
+        <p>Compose every new surface from these rules; rules win over personal preference.</p>
+        <div class="rules-grid">
+          <div class="rules-card do">
+            <h3><span class="mark">✓</span>Do</h3>
+            <ul>
+              <li>Reference <code>--surface-*</code>, <code>--fg-*</code>, and <code>--border-*</code> tokens only.</li>
+              <li>One primary action per view; everything else secondary or ghost.</li>
+              <li>Use text levels from primary to quaternary; body uses secondary.</li>
+              <li>Radii, spacing, and type come from the scales defined in tokens.css.</li>
+              <li>Compose new pages from existing atoms; consider additions only after composing.</li>
+            </ul>
+          </div>
+          <div class="rules-card dont">
+            <h3><span class="mark">✕</span>Don't</h3>
+            <ul>
+              <li>Don't hardcode hex colors or invent new ones.</li>
+              <li>Don't use the accent as a large background or decoration.</li>
+              <li>Don't use borders as decoration; borders separate.</li>
+              <li>Don't mix status colors with priority colors.</li>
+              <li>Don't add a button style or size for a single page.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="ds-overlay" id="dialog">
+    <div class="ds-dialog" role="dialog" aria-modal="true" aria-label="Delete issue">
+      <div class="ds-dialog__head">
+        <span class="title">Delete issue?</span>
+        <button class="ds-iconbtn close" data-close-dialog aria-label="Close"><svg width="16" height="16"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="ds-dialog__body">这个操作不可撤销。弹窗使用 raised 表面、12 圆角、lg 阴影；层高高于菜单与抽屉。</div>
+      <div class="ds-dialog__foot">
+        <button class="ds-btn ds-btn--secondary" data-close-dialog>Cancel</button>
+        <button class="ds-btn ds-btn--danger" data-close-dialog>Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-toast" id="toast"></div>
+
+  <script src="gallery.js"></script>
+</body>
+</html>

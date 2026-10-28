@@ -1,0 +1,16 @@
+name: verify-skills
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify design-system assets
+        run: node app-design-system/scripts/verify.mjs app-design-system/assets/starter app-design-system/assets/examples/linear

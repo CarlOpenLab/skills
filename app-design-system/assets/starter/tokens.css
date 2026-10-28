@@ -1,0 +1,292 @@
+/* Design-system starter — neutral placeholder palette.
+   Replace the values below with the ones measured from the target app.
+   Keep the token names: components and the gallery depend on this contract.
+
+   Contract:
+     surfaces   --surface-app/base/raised/inset/active/pill
+     borders    --border-subtle/default/strong
+     text       --fg-primary/secondary/tertiary/quaternary/placeholder
+     action     --action / --action-hover / --action-pressed / --on-action / --focus
+     states     --state-hover / --state-pressed / --selection / --scrim
+     extras     --avatar-bg / --avatar-fg / --brand-gradient
+     scales     --radius-* / --space-* / --text-* / --control-* / --pad-* / --shadow-*
+*/
+
+:root {
+  --font-sans: "Inter", "Inter Variable", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", "Berkeley Mono", ui-monospace, Consolas, "Liberation Mono", monospace;
+
+  --text-micro: 11px;
+  --text-mini: 12px;
+  --text-small: 13px;
+  --text-regular: 15px;
+  --text-large: 18px;
+  --text-title3: 20px;
+  --text-title2: 24px;
+  --text-title1: 36px;
+  --text-title: var(--text-title2);
+  --text-avatar-16: 8px;
+  --text-avatar-20: 9px;
+  --text-avatar-24: 10px;
+  --text-avatar-28: 11px;
+
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.65;
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 48px;
+
+  --control-xs: 24px;
+  --control-sm: 28px;
+  --control-md: 32px;
+  --control-lg: 36px;
+  --row-sm: 28px;
+  --row-md: 36px;
+  --row-lg: 44px;
+
+  --pad-control-xs: 8px;
+  --pad-control-sm: 10px;
+  --pad-control-md: 12px;
+  --pad-control-lg: 12px;
+  --pad-pill-lead: 6px;
+  --pad-pill-trail: 9px;
+  --pad-kbd: 5px;
+  --pad-menu-item: 8px;
+  --pad-tab: 10px;
+  --pad-input-sm: 10px;
+  --pad-input-md: 12px;
+  --pad-card: 16px;
+  --pad-dialog: 16px;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --sidebar-width: 240px;
+  --row-height: var(--row-lg);
+}
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --n-950: #0b0b0c;
+  --n-900: #121214;
+  --n-850: #17171a;
+  --n-800: #1a1a1d;
+  --n-780: #1d1d20;
+  --n-700: #26262a;
+  --n-600: #2e2e33;
+  --n-550: #36363c;
+
+  --bd-100: #1e1e22;
+  --bd-200: #292930;
+  --bd-300: #33333a;
+
+  --fg-100: #ffffff;
+  --fg-200: #e6e6e9;
+  --fg-300: #9a9aa2;
+  --fg-400: #5e5e66;
+  --fg-placeholder: #6f6f77;
+
+  --ac-500: #4c6ef5;
+  --ac-400: #5c7cf7;
+  --ac-600: #3b5bdb;
+  --ac-focus: #4c6ef5;
+
+  --state-hover: rgba(255, 255, 255, 0.04);
+  --state-pressed: rgba(255, 255, 255, 0.08);
+  --selection: rgba(76, 110, 245, 0.4);
+  --selection-ai: rgba(76, 110, 245, 0.1);
+  --scrim: rgba(0, 0, 0, 0.55);
+  --avatar-bg: #3f4c8f;
+  --avatar-fg: #d7dcff;
+  --brand-gradient: linear-gradient(135deg, #7c5cff, #4c6ef5);
+
+  --status-backlog: #8a8f98;
+  --status-todo: #9e9fa2;
+  --status-progress: #f2c94c;
+  --status-done: #4c6ef5;
+  --status-canceled: #6b6f76;
+
+  --priority-urgent: #f2994a;
+  --priority-high: #e5534b;
+  --priority-medium: #f2c94c;
+  --priority-low: #8a8f98;
+  --priority-none: #565759;
+
+  --surface-app: var(--n-950);
+  --surface-base: var(--n-900);
+  --surface-raised: var(--n-850);
+  --surface-inset: #0f0f11;
+  --surface-active: var(--n-700);
+  --surface-pill: var(--n-600);
+  --surface-pill-hover: var(--n-550);
+  --surface-hover: var(--state-hover);
+
+  --border-subtle: var(--bd-100);
+  --border-default: var(--bd-200);
+  --border-strong: var(--bd-300);
+
+  --fg-primary: var(--fg-100);
+  --fg-secondary: var(--fg-200);
+  --fg-tertiary: var(--fg-300);
+  --fg-quaternary: var(--fg-400);
+
+  --action: var(--ac-500);
+  --action-hover: var(--ac-400);
+  --action-pressed: var(--ac-600);
+  --on-action: #ffffff;
+  --focus: var(--ac-focus);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-default);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --n-950: #ededf0;
+  --n-900: #f8f8fa;
+  --n-850: #ffffff;
+  --n-800: #f3f3f6;
+  --n-780: #ececf0;
+  --n-700: #e2e2e8;
+  --n-600: #ececf0;
+  --n-550: #e0e0e6;
+
+  --bd-100: #e1e1e6;
+  --bd-200: #d6d6dd;
+  --bd-300: #cbcbd3;
+
+  --fg-100: #17171a;
+  --fg-200: #3a3a42;
+  --fg-300: #6a6a74;
+  --fg-400: #8c8c96;
+  --fg-placeholder: #9d9da6;
+
+  --state-hover: rgba(0, 0, 0, 0.04);
+  --state-pressed: rgba(0, 0, 0, 0.08);
+  --selection: rgba(76, 110, 245, 0.25);
+  --selection-ai: rgba(76, 110, 245, 0.08);
+  --scrim: rgba(0, 0, 0, 0.35);
+
+  --surface-app: var(--n-950);
+  --surface-base: var(--n-900);
+  --surface-raised: var(--n-850);
+  --surface-inset: #ffffff;
+  --surface-active: var(--n-700);
+  --surface-pill: var(--n-600);
+  --surface-pill-hover: var(--n-550);
+  --surface-hover: var(--state-hover);
+
+  --border-subtle: var(--bd-100);
+  --border-default: var(--bd-200);
+  --border-strong: var(--bd-300);
+
+  --fg-primary: var(--fg-100);
+  --fg-secondary: var(--fg-200);
+  --fg-tertiary: var(--fg-300);
+  --fg-quaternary: var(--fg-400);
+
+  --status-backlog: #8a8f98;
+  --status-todo: #6b6f76;
+  --status-progress: #c99a1f;
+  --status-done: #4c6ef5;
+  --status-canceled: #9a9da3;
+
+  --priority-urgent: #e08a34;
+  --priority-high: #d64545;
+  --priority-medium: #c99a1f;
+  --priority-low: #8a8f98;
+  --priority-none: #b6b8bd;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 0.5px 1px 1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px var(--border-subtle);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-app);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+:focus-visible {
+  outline: 1px solid var(--focus);
+  outline-offset: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}

@@ -1,0 +1,30 @@
+<!-- Card, Dialog shell, Toast. Layer order: menu < drawer < dialog < toast. -->
+<div class="ds-card" style="max-width: 420px">
+  <div class="ds-card__head"><span class="title">Design system</span><span class="meta">12 issues</span></div>
+  <div class="ds-card__body">Cards carry one group of related information. No nested cards.</div>
+</div>
+
+<button class="ds-btn ds-btn--secondary" data-open-dialog>Open dialog</button>
+
+<div class="ds-overlay" id="dialog" hidden>
+  <div class="ds-dialog" role="dialog" aria-modal="true" aria-label="Delete issue">
+    <div class="ds-dialog__head">
+      <span class="title">Delete issue?</span>
+      <button class="ds-iconbtn close" data-close-dialog aria-label="Close"><svg width="16" height="16"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="ds-dialog__body">This action cannot be undone.</div>
+    <div class="ds-dialog__foot">
+      <button class="ds-btn ds-btn--secondary" data-close-dialog>Cancel</button>
+      <button class="ds-btn ds-btn--danger" data-close-dialog>Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="ds-toast" id="toast"></div>
+
+<script>
+  // Minimal wiring: toggle .open instead of hidden in production.
+  const overlay = document.getElementById('dialog');
+  document.querySelector('[data-open-dialog]').addEventListener('click', () => overlay.classList.add('open'));
+  document.querySelectorAll('[data-close-dialog]').forEach((b) => b.addEventListener('click', () => overlay.classList.remove('open')));
+</script>

@@ -1,0 +1,326 @@
+/* ==========================================================================
+   Linear-style design tokens
+   Source: linear.app (dark), 2026-10-28
+   Structure: primitives -> semantic roles -> component aliases
+   Rule: components must reference semantic tokens, never primitives directly.
+   ========================================================================== */
+
+:root {
+  /* type family */
+  --font-sans: "Inter", "Inter Variable", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "Berkeley Mono", "SF Mono", ui-monospace, Consolas, "Liberation Mono", monospace;
+
+  /* type scale (extracted) */
+  --text-micro: 11px;
+  --text-mini: 12px;
+  --text-small: 13px;
+  --text-regular: 15px;
+  --text-large: 18px;
+  --text-title3: 20px;
+  --text-title2: 24px;
+  --text-title1: 36px;
+  --text-title: var(--text-title2);
+
+  /* avatar initials — the only sub-11px exception */
+  --text-avatar-16: 7px;
+  --text-avatar-20: 8px;
+  --text-avatar-24: 9px;
+  --text-avatar-28: 10px;
+
+  --weight-light: 300;
+  --weight-normal: 450;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.65;
+
+  /* spacing scale — only these values */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 48px;
+
+  /* control sizes */
+  --control-xs: 24px;
+  --control-sm: 28px;
+  --control-md: 32px;
+  --control-lg: 36px;
+  --row-sm: 28px;
+  --row-md: 36px;
+  --row-lg: 44px;
+
+  /* component padding — horizontal only; vertical rhythm comes from height/flex */
+  --pad-control-xs: 8px;
+  --pad-control-sm: 10px;
+  --pad-control-md: 12px;
+  --pad-control-lg: 12px;
+  --pad-pill-lead: 6px;
+  --pad-pill-trail: 9px;
+  --pad-kbd: 5px;
+  --pad-menu-item: 8px;
+  --pad-tab: 10px;
+  --pad-input-sm: 10px;
+  --pad-input-md: 12px;
+  --pad-card: 16px;
+  --pad-dialog: 16px;
+
+  /* radius scale — only these values */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --sidebar-width: 240px;
+  --row-height: var(--row-lg);
+}
+
+/* --------------------------------------------------------------------------
+   dark
+   -------------------------------------------------------------------------- */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* primitives */
+  --n-950: #09090a;
+  --n-900: #121213;
+  --n-850: #161617;
+  --n-800: #17181a;
+  --n-780: #1a1a1b;
+  --n-700: #232325;
+  --n-600: #2a2b2d;
+  --n-550: #313235;
+
+  --bd-100: #1a1b1d;
+  --bd-200: #232426;
+  --bd-300: #28282b;
+
+  --fg-100: #ffffff;
+  --fg-200: #e3e4e6;
+  --fg-300: #959597;
+  --fg-400: #565759;
+  --fg-placeholder: #6b6c6f;
+
+  --ac-500: #5e6ad2;
+  --ac-400: #6b77de;
+  --ac-600: #4f5bc4;
+  --ac-focus: #5e69d1;
+
+  --state-hover: rgba(255, 255, 255, 0.04);
+  --state-pressed: rgba(255, 255, 255, 0.08);
+  --selection: rgba(94, 106, 210, 0.4);
+  --selection-ai: rgba(94, 106, 210, 0.1);
+  --scrim: rgba(0, 0, 0, 0.55);
+  --avatar-bg: #4b53a8;
+  --avatar-fg: #d9dcff;
+  --brand-gradient: linear-gradient(135deg, #7b5cff, #5e6ad2);
+
+  --status-backlog: #8a8f98;
+  --status-todo: #9e9fa2;
+  --status-progress: #f2c94c;
+  --status-done: #5e6ad2;
+  --status-canceled: #6b6f76;
+
+  --priority-urgent: #f2994a;
+  --priority-high: #e5534b;
+  --priority-medium: #f2c94c;
+  --priority-low: #8a8f98;
+  --priority-none: #565759;
+
+  /* semantic roles */
+  --surface-app: var(--n-950);
+  --surface-base: var(--n-900);
+  --surface-raised: var(--n-850);
+  --surface-inset: #101011;
+  --surface-active: var(--n-700);
+  --surface-pill: var(--n-600);
+  --surface-pill-hover: var(--n-550);
+  --surface-hover: var(--state-hover);
+
+  --border-subtle: var(--bd-100);
+  --border-default: var(--bd-200);
+  --border-strong: var(--bd-300);
+
+  --fg-primary: var(--fg-100);
+  --fg-secondary: var(--fg-200);
+  --fg-tertiary: var(--fg-300);
+  --fg-quaternary: var(--fg-400);
+
+  --action: var(--ac-500);
+  --action-hover: var(--ac-400);
+  --action-pressed: var(--ac-600);
+  --on-action: #ffffff;
+  --focus: var(--ac-focus);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 0.5px 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-default);
+
+  /* legacy aliases (replica.html) */
+  --bg-app: var(--surface-app);
+  --bg-base: var(--surface-base);
+  --bg-secondary: var(--surface-raised);
+  --bg-tertiary: var(--n-800);
+  --bg-quaternary: var(--n-780);
+  --bg-active: var(--surface-active);
+  --bg-hover: var(--surface-hover);
+  --bg-pill: var(--surface-pill);
+  --bg-pill-hover: var(--surface-pill-hover);
+  --bg-input: var(--surface-inset);
+  --border-primary: var(--border-subtle);
+  --border-secondary: var(--border-default);
+  --border-tertiary: var(--border-strong);
+  --text-primary: var(--fg-primary);
+  --text-secondary: var(--fg-secondary);
+  --text-tertiary: var(--fg-tertiary);
+  --text-quaternary: var(--fg-quaternary);
+  --text-placeholder: var(--fg-placeholder);
+  --accent: var(--action);
+  --accent-hover: var(--action-hover);
+  --accent-text: var(--on-action);
+  --focus-ring: var(--focus);
+}
+
+/* --------------------------------------------------------------------------
+   light
+   -------------------------------------------------------------------------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --n-950: #efeff0;
+  --n-900: #f9f9fa;
+  --n-850: #ffffff;
+  --n-800: #f4f4f5;
+  --n-780: #eeeef0;
+  --n-700: #e7e7e9;
+  --n-600: #eeeef0;
+  --n-550: #e4e4e7;
+
+  --bd-100: #e2e2e2;
+  --bd-200: #d8d9dd;
+  --bd-300: #cfd0d4;
+
+  --fg-100: #191a1c;
+  --fg-200: #3b3d42;
+  --fg-300: #6b6f76;
+  --fg-400: #8b8f96;
+  --fg-placeholder: #9a9da3;
+
+  --state-hover: rgba(0, 0, 0, 0.04);
+  --state-pressed: rgba(0, 0, 0, 0.08);
+  --selection: rgba(94, 106, 210, 0.25);
+  --selection-ai: rgba(94, 106, 210, 0.08);
+  --scrim: rgba(0, 0, 0, 0.35);
+
+  --surface-app: var(--n-950);
+  --surface-base: var(--n-900);
+  --surface-raised: var(--n-850);
+  --surface-inset: #ffffff;
+  --surface-active: var(--n-700);
+  --surface-pill: var(--n-600);
+  --surface-pill-hover: var(--n-550);
+  --surface-hover: var(--state-hover);
+
+  --border-subtle: var(--bd-100);
+  --border-default: var(--bd-200);
+  --border-strong: var(--bd-300);
+
+  --fg-primary: var(--fg-100);
+  --fg-secondary: var(--fg-200);
+  --fg-tertiary: var(--fg-300);
+  --fg-quaternary: var(--fg-400);
+
+  --status-backlog: #8a8f98;
+  --status-todo: #6b6f76;
+  --status-progress: #c99a1f;
+  --status-done: #5e6ad2;
+  --status-canceled: #9a9da3;
+
+  --priority-urgent: #e08a34;
+  --priority-high: #d64545;
+  --priority-medium: #c99a1f;
+  --priority-low: #8a8f98;
+  --priority-none: #b6b8bd;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 0.5px 1px 1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px var(--border-subtle);
+}
+
+/* base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-app);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+:focus-visible {
+  outline: 1px solid var(--focus);
+  outline-offset: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
